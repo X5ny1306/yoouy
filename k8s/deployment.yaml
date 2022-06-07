@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kaotu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kaotu
+  template:
+    metadata:
+      labels:
+        app: kaotu
+    spec:
+      containers:
+      - image: okteto.dev/kaotu:latest
+        name: kaotu
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: ProxySite
+          value: "canva.com"
+        - name: Vless_UUID
+          value: "a6e28727-4e8a-47bf-adbe-a78dcc302ca1"
+        - name: Vless_Path
+          value: "/s2335"
+        - name: Vmess_UUID
+          value: "a6e28727-4e8a-47bf-adbe-a78dcc302ca1"
+        - name: Vmess_Path
+          value: "/s2446"
+        - name: Share_Path
+          value: "Shares2335"
